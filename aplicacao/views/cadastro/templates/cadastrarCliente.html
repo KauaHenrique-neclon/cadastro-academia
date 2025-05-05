@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('cadastro.static', filename='cadastrarCliente.css') }}">
+    </head>
+    <body>
+        {% include 'cabecario/cabecario.html' %}
+        <div class="titulos">
+            <h1>Cadastro de Alunos</h1>
+        </div>
+        <div class="cadastrarCliente">
+            <div class="client">
+            <form action="/cadastroAluno" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <h2>Cliente</h2>
+                <div class="nomeClient">
+                    <h1>Nome: </h1>
+                    {{ form.nome() }}
+                </div>
+                <div class="nomeClient">
+                    <h1>Email: </h1>
+                    {{ form.email() }}
+                </div>
+                <div class="nomeClient">
+                    <h1>Password: </h1>
+                    {{ form.password() }}
+                </div>
+            </div>
+            <div class="clientDadoslocal">
+                <h2>Residencia</h2>
+                <div class="dadosBasico">
+                    <h1>Bairro: </h1>
+                    {{ form.bairro() }}
+                </div>
+                <div class="dadosBasico">
+                    <h1>Rua: </h1>
+                    {{ form.rua() }}
+                </div>
+                <div class="dadosBasico">
+                    <h1>Numero: </h1>
+                    {{ form.numero() }}
+                </div>
+            </div>
+            <div class="buttonsSS">
+                <button type="submit">{{ form.submit.label }}</button>
+                <button>Menu</button>
+            </div>
+            </form>
+        </div>
+    </body>
+</html>

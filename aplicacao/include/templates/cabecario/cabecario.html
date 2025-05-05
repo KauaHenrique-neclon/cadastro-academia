@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('serveStatic', filename='cabecario/cabecario.css') }}">
+        <script src="{{ url_for('serveStatic', filename='cabecario/cabecario.js') }}" defer></script>
+    </head>
+    <body>
+        <nav>
+            <li class="menu-li">
+                <ul class="menu-ul">
+                    <li class="li-subMenu">
+                        <a href="javascript:void(0);" class="btnCadastrar">Cadastrar</a>
+                        <ul class="ul-cadastrar">
+                            <a href="{{ url_for('cadastro.cadastroAluno') }}"><li>Cliente</li></a>
+                            <a href=""><li>Adm</li></a>
+                        </ul>
+                    </li>
+                    <!-- separa cla -->
+                    <li class="li-subMenu">
+                        <a href="javascript:void(0);" class="btnDadosCadastro">Dados Cadastro</a>
+                        <ul class="ul-dados">
+                            <a href="{{ url_for('usuarioTabela.tabelaUsuario') }}"><li>Tabela Usuários</li></a>
+                            <a href="{{ url_for('admTabela.tabelaAdm') }}"><li>Tabela ADM</li></a>
+                        </ul>
+                    </li>
+                    <!-- separa cla -->
+                    <li class="li-subMenu">
+                        <button>Home</button>
+                    </li>
+                </ul>
+            </li>
+        </nav>
+    </body>
+</html>

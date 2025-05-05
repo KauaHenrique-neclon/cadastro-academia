@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('pagamento.static', filename='dashboardFina.css') }}">
+        <title>Dashboard da Academia</title>
+    </head>
+    <body>
+        <header>
+            <h1>Dashboard da Academia</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Alunos</a></li>
+                    <li><a href="#">Treinos</a></li>
+                    <li><a href="#">Financeiro</a></li>
+                    <li><a href="#">Relatórios</a></li>
+                    <li><a href="#">Configurações</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="info-segment">
+                <h2>Estatísticas</h2>
+                <div class="card">
+                    <h3>Total de Alunos</h3>
+                    <p>120</p>
+                </div>
+                <div class="card">
+                    <h3>Novos Alunos este Mês</h3>
+                    <p>15</p>
+                </div>
+                <div class="card">
+                    <h3>Treinos Agendados</h3>
+                    <p>45</p>
+                </div>
+            </section>
+            <section class="table-segment">
+                <h2>Alunos Ativos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Data de Início</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maria Silva</td>
+                            <td>maria@example.com</td>
+                            <td>01/01/2023</td>
+                           <td>Ativo</td>
+                        </tr>
+                        <tr>
+                            <td>João Pereira</td>
+                            <td>joao@example.com</td>
+                            <td>15/02/2023</td>
+                            <td>Ativo</td>
+                        </tr>
+                        <tr>
+                            <td>Ana Costa</td>
+                            <td>ana@example.com</td>
+                            <td>25/03/2023</td>
+                            <td>Ativo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="mensalidades-segment">
+                <h2>Valores de Mensalidades</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo de Mensalidade</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mensalidade Standard</td>
+                            <td>R$ 100,00</td>
+                        </tr>
+                        <tr>
+                            <td>Mensalidade Premium</td>
+                            <td>R$ 150,00</td>
+                        </tr>
+                        <tr>
+                            <td>Mensalidade Estudante</td>
+                            <td>R$ 80,00</td>
+                        </tr>
+                        <tr>
+                            <td>Mensalidade Familiar</td>
+                            <td>R$ 250,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025 Kauã</p>
+        </footer>
+    </body>
+</html>

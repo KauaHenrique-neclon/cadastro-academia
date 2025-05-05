@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tabelaPagamento.css">
+    <title>Tabela de Pagamentos</title>
+</head>
+<body>
+    <h1>Tabela de Pagamentos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Aluno ID</th>
+                <th>Data do Pagamento</th>
+                <th>Vencimento</th>
+                <th>Valor</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if dadosPagamentos %}
+                {% for dados in dadosPagamentos %}
+                <td>{{ dados.id }}</td>
+                <td>{{ dados.aluno_id }}</td>
+                <td>{{ dados.datapagamento }}</td>
+                <td>{{ dados.vencimento }}</td>
+                <td>{{ dados.valor }}</td>
+                <td>{{ dados.status }}</td>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="5">Nenhum usuário encontrado.</td>
+                </tr>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

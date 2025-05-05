@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('usuarioTabela.static',filename='tabelaUsuario.css') }}">
+    <title>Tabela de Adm</title>
+</head>
+<body>
+    <h2>Tabela de Adm</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ativo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if dadosUsuario %}
+                {% for dados in dadosUsuario %}
+                <td>{{ dados.id }}</td>
+                <td>{{ dados.nome }}</td>
+                <td>{{ dados.email }}</td>
+                <form action="{{ url_for( 'usuarioTabela.tabelaUsuario' ) }}"  method="POST">
+                <td class="{{ 'active' if dados.is_active == 'True' else 'inactive' }}">
+                    <input type="hidden" name="user_id" id="user_id" value="{{ dados.id }}">
+                    {{ 'Ativo' if dados.is_active == 'True' else 'Inativo' }}
+                </td>
+                <td>
+                    <button class="button">{{ 'Desativar' if dados.is_active == 'True' else 'Ativar' }}</button>
+                </td>
+                </form>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="5">Nenhum usuário encontrado.</td>
+                </tr>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+    </body>
+</html>

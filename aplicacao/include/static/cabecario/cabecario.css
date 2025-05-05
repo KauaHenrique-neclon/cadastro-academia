@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+}
+
+nav {
+    background-color: #5bc0de;
+    padding: 10px 20px;
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+}
+
+.menu-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    margin-top: 10px;
+    height: 40px;
+    min-height: 40px;
+}
+.menu-li {
+    position: relative;
+    margin-right: 20px;
+}
+
+.menu-li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-li a:hover {
+    background-color: #0056b3;
+}
+
+
+.ul-cadastrar, .ul-dados {
+    margin-top: 10px;
+    display: none;
+    position: absolute;
+    background-color: #343a40;
+    padding: 10px;
+    list-style-type: none;
+    margin: 0;
+    border-radius: 0 0 5px 5px;
+    width: auto;
+    min-width: 20%;
+}
+
+.li-subMenu:hover .ul-cadastrar,
+.li-subMenu:hover .ul-dados {
+    display: block;
+}
+
+.ul-cadastrar li, .ul-dados li {
+    margin: 5px 0;
+}
+
+.ul-cadastrar a, .ul-dados a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.ul-cadastrar a:hover, .ul-dados a:hover {
+    background-color: #495057;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('pagamento.static', filename='efetuarPagamento.css') }}">
+        <script src="{{ url_for('pagamento.static', filename='efetuarPagamento.js') }}" defer></script>
+    </head>
+    <body>
+        <div class="tudo">
+            <h1>Pagamentos Alunos</h1>
+            <!-- tabela do alunos -->
+            <select name="escolher" id="escolher">
+                <option value="pedente">Pedente</option>
+                <option value="pago">Pago</option>
+            </select>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Vencimento</th>
+                        <th>Preço</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                {% if produtos %}
+                {% for produt in produtos %}
+                <tbody>
+                    <tr>
+                        <td>{{ nome }}</td>
+                        <td>{{ vencimento }}</td>
+                        <td>{{ preco }}</td>
+                        <td class="botoes">
+                            <button id="buttonAbrirJanela" name="buttonAbrirJanela" type="button">Atualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- janela modal -->
+        <div class="janelaModalAtualizar" name="janelaModalAtualizar" id="janelaModalAtualizar">
+            <span class="fechar-modalFoto" style="cursor: pointer;">&times;</span>
+                <div class="dadosUsuario">
+                <form action="/efetuarPagamento" method="POST">
+                    <input type="hidden" name="idPagamento" value="{{ idpagamento }}">
+                    <h2>ID: </h2>
+                    <h2>Nome: </h2>
+                    <h2>Email: </h2>
+                </div>
+                <div class="dadosPagamento">
+                    <h2>ID: </h2>
+                    <h2>Vencimento: </h2>
+                    <h2>Valor: </h2>
+                </div>
+                <div>
+                    <select name="formaDePagamento" id="formaDePagamento">
+                        <option value="dinherio">Dinheiro</option>
+                        <option value="pix">Pix</option>
+                        <option value="cartao">Cartão</option>
+                    </select>
+                </div>
+                <button>Atualizar</button>
+                </form>
+        </div>
+    </body>
+</html>
