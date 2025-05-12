@@ -19,36 +19,48 @@
                         <th>Vencimento</th>
                         <th>Preço</th>
                         <th>Status</th>
+                        <th>Atualizar</th>
                     </tr>
                 </thead>
-                {% if produtos %}
-                {% for produt in produtos %}
+                {% if dadosStatus %}
+                {% for dados in dadosStatus %}
+                {% if dadosAlunos %}
+                {% for dadosAlunos in dadosAlunos %}
                 <tbody>
                     <tr>
-                        <td>{{ nome }}</td>
-                        <td>{{ vencimento }}</td>
-                        <td>{{ preco }}</td>
+                        <td>{{ dadosAlunos.nome }}</td>
+                        <td>{{ dados.vencimento }}</td>
+                        <td>{{ dados.preco }}</td>
+                        <td>{{ dados.status }}</td>
                         <td class="botoes">
                             <button id="buttonAbrirJanela" name="buttonAbrirJanela" type="button">Atualizar</button>
                         </td>
                     </tr>
                 </tbody>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
             </table>
         </div>
         <!-- janela modal -->
         <div class="janelaModalAtualizar" name="janelaModalAtualizar" id="janelaModalAtualizar">
             <span class="fechar-modalFoto" style="cursor: pointer;">&times;</span>
                 <div class="dadosUsuario">
+                {% if dadosStatus %}
+                {% for dados in dadosStatus %}
+                {% if dadosAlunos %}
+                {% for dadosAlunos in dadosAlunos %}
                 <form action="/efetuarPagamento" method="POST">
                     <input type="hidden" name="idPagamento" value="{{ idpagamento }}">
-                    <h2>ID: </h2>
-                    <h2>Nome: </h2>
-                    <h2>Email: </h2>
+                    <h2>ID: {{ dadosAlunos.id }}</h2>
+                    <h2>Nome: {{ dadosAlunos.nome }}</h2>
+                    <h2>Email: {{ dadosAlunos.email }}</h2>
                 </div>
                 <div class="dadosPagamento">
-                    <h2>ID: </h2>
-                    <h2>Vencimento: </h2>
-                    <h2>Valor: </h2>
+                    <h2>ID: {{ dados.id }}</h2>
+                    <h2>Vencimento: {{ dados.vencimento }}</h2>
+                    <h2>Valor: {{ dados.valor }}</h2>
                 </div>
                 <div>
                     <select name="formaDePagamento" id="formaDePagamento">
@@ -58,6 +70,10 @@
                     </select>
                 </div>
                 <button>Atualizar</button>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
                 </form>
         </div>
     </body>

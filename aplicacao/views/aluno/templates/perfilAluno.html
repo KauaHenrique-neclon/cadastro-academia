@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Aluno - Academia</title>
+    <link rel="stylesheet" href="perfilAluno.css">
+</head>
+
+<body>
+    <div class="container">
+        {% if dadosAlunos%}
+        {% for dados in dadosAlunos %}
+        <div class="profile-header">
+            <img src="" alt="Foto do Aluno">
+            <div>
+                <h2>{{ dados.nome }}</h2>
+                <p>Aluno de Academia</p>
+            </div>
+        </div>
+
+        <h1 style="text-align: center; color: #4CAF50;">Perfil</h1>
+        
+        <div class="info">
+            <label>ID:</label>
+            <p>{{ dados.id }}</p>
+        </div>
+        <div class="info">
+            <label>Nome:</label>
+            <p>{{ dados.nome }}</p>
+        </div>
+        <div class="info">
+            <label>Email:</label>
+            <p>{{ dados.email }}</p>
+        </div>
+        <div class="info">
+            <label>Data de Criação:</label>
+            <p>{{ dados.datacriacao }}</p>
+        </div>
+        <div class="info">
+            <label>Bairro:</label>
+            <p>{{ dados.bairro }}</p>
+        </div>
+        <div class="info">
+            <label>Rua:</label>
+            <p>{{ dados.rua }}</p>
+        </div>
+        <div class="info">
+            <label>Número:</label>
+            <p>{{ dados.numero }}</p>
+        </div>
+        
+        <!-- <div class="goal">
+            <label>Meta:</label>
+            <p>Perder 5 kg em 3 meses</p>
+            <label>Objetivo:</label>
+            <p>Melhorar a resistência cardiovascular e tonificar os músculos</p>
+        </div> -->
+
+        <div class="actions">
+            <button><i class="fas fa-edit"></i> Editar Perfil</button>
+            <button><i class="fas fa-dumbbell"></i> Ver Treinos</button>
+        </div>
+    </div>
+</body>
+
+</html>

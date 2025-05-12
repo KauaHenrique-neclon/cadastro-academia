@@ -2,10 +2,11 @@ from flask import Flask, send_from_directory
 from apscheduler.schedulers.background import BackgroundScheduler
 import os
 from flask_migrate import Migrate
+from flask_login import LoginManager
 from configuracao.configuracao import configura
 from configuracao.banco import db
 
-from aplicacao.views.login.login import login
+from aplicacao.views.login.login import login, login_manager
 from aplicacao.views.home.home import home
 from aplicacao.views.cadastro.cadastroCliente import cadastro
 from aplicacao.views.financeiro.pagamento import pagamento
@@ -13,6 +14,9 @@ from aplicacao.views.financeiro.pagamentoAutomatico import criarPagamentoAutomat
 from aplicacao.views.tabelas.tabelaUsuario import usuarioTabela
 from aplicacao.views.tabelas.tabelaAdm import admTabela
 from aplicacao.views.tabelas.tabelaPagamentos import pagamentoTabela
+from aplicacao.views.aluno.homeAluno import homeAluno
+
+
 
 def AppFlask():
 
@@ -22,14 +26,10 @@ def AppFlask():
     migrate = Migrate(app, db)
     app.jinja_loader.searchpath.append(os.path.join(app.root_path, 'aplicacao/include/templates'))
 
-    """app.register_blueprint(login)
-    app.register_blueprint(home)
-    app.register_blueprint(cadastro,url_prefix='/cadastro')
-    app.register_blueprint(pagamento,url_prefix='/pagamento')
-    app.register_blueprint(usuarioTabela,prefix='/usuarioTabela')
-    app.register_blueprint(admTabela ,prefix='/tabelas-adm')"""
 
 
+    login_manager.init_app(app) 
+    login_manager.login_view = 'login.login_index'
 
     routes = [
         (login, None),
@@ -37,8 +37,9 @@ def AppFlask():
         (cadastro, '/cadastro'),
         (pagamento, '/pagamento'),
         (usuarioTabela, '/usuarioTabela'),
-        (admTabela, '/tabelas-adm'),
-        (pagamentoTabela,'/pagamentotabela'),
+        (admTabela, '/tabelasAdm'),
+        (pagamentoTabela,'/tabelaPagamentos'),
+        (homeAluno,'/homeAluno'),
         ]
 
     for blueprint, prefix in routes:

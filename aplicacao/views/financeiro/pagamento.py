@@ -4,6 +4,7 @@ from models.financeiro.financeiro import pagamentos
 from models.usuario.aluno import AlunoModel
 from flask.views import MethodView
 import datetime
+from aplicacao.decorador.verificarAdm import verificarAdm
 #from aplicacao.form.financeiro.formFinanceiro import formFinanceiro
 from configuracao.banco import db
 
@@ -15,7 +16,9 @@ pagamento = Blueprint('pagamento',__name__,template_folder='templates',
 
 
 class pagamentoEfetado(MethodView):
-    
+
+
+    @verificarAdm
     def post(self):
         idPagamentoPegado = request.form.get('idPagamento')
         formaPagamento = request.form.get('formaDePagamento')
@@ -32,7 +35,7 @@ class pagamentoEfetado(MethodView):
             flash('Preencha todos os campos')
 
 
-
+    @verificarAdm
     def get(self):
         #form = formFinanceiro()
         status = request.values.get('escolher')
@@ -56,12 +59,16 @@ class pagamentoEfetado(MethodView):
 
 
 class dashboard(MethodView):
+
+    @verificarAdm
     def post(self):
         pass
 
+
+    @verificarAdm
     def get(self):
         alunos = AlunoModel.query.filter_by(is_active='True')
         return render_template('dashboardFina.html',aluno=alunos)
 
 
-pagamento.add_url_rule('/efetuarPagamento',view_func=pagamentoEfetado.as_view('efetuarPagamento'))
+pagamento.add_url_rule('/efetuarPagamento',view_func=pagamentoEfetado.as_view('efetuarPagamento'), methods=['POST','GET'])

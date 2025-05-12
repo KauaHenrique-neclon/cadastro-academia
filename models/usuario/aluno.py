@@ -14,7 +14,21 @@ class AlunoModel(db.Model):
     rua = db.Column(db.String(60),nullable=False)
     numero = db.Column(db.Integer, nullable=False)
     is_active = db.Column(db.Boolean, default=True)
+    role = db.Column(db.String(20), default='aluno')
     #fotoUsuario
 
     # Relação com pagamentos
     pagamentos = db.relationship('Pagamento', back_populates='aluno')
+
+    def __init__(self, nome, senha, email, is_active, role):
+        self.email = email
+        self.senha = senha
+        self.nome = nome
+        self.is_active = is_active
+        self.role = role
+    
+    def get_id(self):
+        return self.id
+    
+    def __repr__(self):
+        return f"Dados('{self.nome}')"

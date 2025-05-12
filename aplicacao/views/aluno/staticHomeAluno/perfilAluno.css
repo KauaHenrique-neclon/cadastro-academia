@@ -1,0 +1,91 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e9ecef;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border: 3px solid #4CAF50;
+    margin-right: 20px;
+}
+
+.profile-header div {
+    flex: 1;
+}
+
+.profile-header h2 {
+    margin: 0;
+    color: #343a40;
+}
+
+.profile-header p {
+    color: #6c757d;
+}
+
+.info {
+    margin: 15px 0;
+    padding: 10px;
+    border-left: 4px solid #4CAF50;
+    background: #f8f9fa;
+}
+
+.info label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.info p {
+    color: #343a40;
+    margin: 5px 0 0;
+}
+
+.goal {
+    margin: 15px 0;
+    padding: 10px;
+    border-left: 4px solid #007BFF;
+    background: #f8f9fa;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.actions button {
+    padding: 10px 20px;
+    margin: 5px;
+    color: #fff;
+    background: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.actions button:hover {
+    background: #45a049;
+}
+
+.actions button:focus {
+    outline: none;
+}
