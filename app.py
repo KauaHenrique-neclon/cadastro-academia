@@ -15,6 +15,7 @@ from aplicacao.views.tabelas.tabelaUsuario import usuarioTabela
 from aplicacao.views.tabelas.tabelaAdm import admTabela
 from aplicacao.views.tabelas.tabelaPagamentos import pagamentoTabela
 from aplicacao.views.aluno.homeAluno import homeAluno
+from aplicacao.views.aluno.perfilAluno import perfilAluno
 
 
 
@@ -29,7 +30,7 @@ def AppFlask():
 
 
     login_manager.init_app(app) 
-    login_manager.login_view = 'login.login_index'
+    login_manager.login_view = 'login.loginEntrar'
 
     routes = [
         (login, None),
@@ -40,12 +41,11 @@ def AppFlask():
         (admTabela, '/tabelasAdm'),
         (pagamentoTabela,'/tabelaPagamentos'),
         (homeAluno,'/homeAluno'),
+        (perfilAluno,'/perfilAluno'),
         ]
 
     for blueprint, prefix in routes:
         app.register_blueprint(blueprint, url_prefix=prefix)
-
-    #login_manager.init_app(app)
 
     
     # configurando para novo static pq o flask é bucha
@@ -63,7 +63,7 @@ def AppFlask():
         except Exception as e:
             print(f"Erro ao criar tabelas: {e}")
 
-    return app
+    return app 
 
 """
 

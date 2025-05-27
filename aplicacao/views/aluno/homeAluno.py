@@ -10,7 +10,7 @@ class AlunosHome(MethodView):
     def get(self):
         alunoId = current_user.id
         dadosAlunos = AlunoModel.query.filter_by(id=alunoId)
-        contexto = {'dadosAlunos':dadosAlunos}
+        contexto = {'dadosAlunos':dadosAlunos, 'id':alunoId}
         return render_template('homeAlunos.html')
     
 

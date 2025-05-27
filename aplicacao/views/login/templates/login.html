@@ -9,14 +9,14 @@
     <body>  
         <div class="login-container">
             <h2>Login</h2>
-            <form action="/" method="POST" enctype="multipart/form-data">
-            <label for="username">Usuário</label>
-            <input type="text" id="username" name="username" required>
+            <form action="{{ url_for('login.loginEntrar') }}" method="POST">
+                <label for="username">Usuário</label>
+                <input type="email" class="input-field" id="email" name="email">
  
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password" required>
+                <label for="password">Senha</label>
+                <input type="password" class="input-field" id="password" name="password">
 
-            <input type="submit" value="Entrar">
+                <button type="submit">Entrar</button>
             </form>
             <div class="forgot-password">
                 <a href="#">Esqueceu sua senha?</a>

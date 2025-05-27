@@ -13,8 +13,10 @@ perfilAluno = Blueprint('perfilAluno',__name__,template_folder='templates',
 
 
 class AlunoPerfil(MethodView):
-    def get(self):
-        dadosAluno = AlunoModel.query.filter_by()
+    def get(self, id):
+        idAluno = id
+        dadosAluno = AlunoModel.query.filter_by(id=idAluno)
+        contexto = {'dados':dadosAluno}
         return render_template('perfilAluno.html')
     
 

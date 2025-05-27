@@ -6,13 +6,14 @@ class pagamentos(db.Model):
     __tablename__ = 'pagamentos'
 
     id = db.Column(db.Integer,primary_key=True)
-    aluno_id = db.Column(db.Integer, db.ForeignKey('alunoModel.id'), nullable=False)
-    aluno = db.relationship('AlunoModel', back_populates='pagamentos')
+    aluno_id = db.Column(db.Integer, db.ForeignKey('alunomodel.id'), nullable=False)
     datapagamento = db.Column(db.Date)
     vencimento = db.Column(db.Date)
     valor = db.Column(db.Float, nullable=False)
     formadepagamento = db.Column(db.String(30), nullable=False)
     status = db.Column(db.String(20), nullable=False)
+
+    aluno = db.relationship('AlunoModel', back_populates='pagamentos')
 
     def __init__(self, aluno_id, datapagamento, vencimento, valor):
         self.aluno_id = aluno_id

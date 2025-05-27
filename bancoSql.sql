@@ -5,7 +5,8 @@ create table Usuarios(
 	senha varchar(30) not null,
 	is_active boolean not null,
 	datacriacao date not null,
-	is_admin boolean not null
+	is_admin boolean not null,
+    admSuper boolean not null
 )
 CREATE TABLE alunoModel (
     id SERIAL PRIMARY KEY,
@@ -18,16 +19,15 @@ CREATE TABLE alunoModel (
     numero INTEGER NOT NULL,
     is_active BOOLEAN DEFAULT TRUE
 )
-CREATE TABLE pagamentos (
+CREATE TABLE pagamento (
     id SERIAL PRIMARY KEY,
-    aluno_id INT NOT NULL,
+    aluno_id INTEGER NOT NULL,
     datapagamento DATE,
     vencimento DATE,
     valor FLOAT NOT NULL,
     formadepagamento VARCHAR(30) NOT NULL,
     status VARCHAR(20) NOT NULL,
-    FOREIGN KEY (aluno_id) REFERENCES Alunos(id)
+    FOREIGN KEY (aluno_id) REFERENCES alunoModel(id)
 );
 
-
-insert into usuarios(nome, email, senha, is_active, datacriacao, is_admin) values('kaua','kaua123','123','True','2025-04-22','True')
+insert into usuarios(nome, email, senha, is_active, datacriacao, is_admin, admSuper) values('kaua','kaua123@gmail.com','123','True','2025-04-22','True','True')

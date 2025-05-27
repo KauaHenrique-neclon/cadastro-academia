@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request ,redirect, current_app, ur
 from flask_login import LoginManager, login_user, current_user
 from models.usuario.admLogin import Usuarios
 from models.usuario.aluno import AlunoModel
+#from aplicacao.form.login.formLogin import formLogin
 from flask.views import MethodView
 from functools import wraps
 
@@ -25,29 +26,26 @@ class Login(MethodView):
 
 
     def post(self):
-        email = request.form.get('username')
+        emailUser = request.form.get('email')
         password = request.form.get('password')
-
-
-        user = Usuarios.query.filter_by(username=email).first()
-        if user and user.check_password(password):
+        print(emailUser)
+        print(password)
+        user = Usuarios.query.filter_by(email=emailUser).first()
+        if user and user.senha == password:
             login_user(user)
-            if user.role == 'admin':
-                return redirect(url_for('home.home'))
-            else:
-                flash('Credenciais inválidas.')
-
-
-        user = AlunoModel.query.filter_by(email=email).first()
-        if user and user.check_password(password):
+            print("passou o log do usuarios")
+            return redirect(url_for('home.home'))
+    
+        user = AlunoModel.query.filter_by(email=emailUser).first()
+        if user and user.senha == password:
             login_user(user)
             return redirect(url_for('homeAluno.alunosHome'))
-        else:
-            flash('Credenciais inválidas.')
+    
+        flash('Credenciais inválidas.')
+        return redirect(url_for('login.loginEntrar'))
 
 
 
 
 
-
-login.add_url_rule('/', view_func=Login.as_view('login_index'),  methods=['GET', 'POST'])
+login.add_url_rule('/', view_func=Login.as_view('loginEntrar'),  methods=['GET', 'POST'])
